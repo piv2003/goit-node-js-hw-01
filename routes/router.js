@@ -3,6 +3,7 @@ const fs = require("fs/promises");
 const path = require("path");
 
 const usersPath = path.join(__dirname, "../db/users.json");
+console.log(usersPath);
 
 const router = Router();
 
