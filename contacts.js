@@ -24,3 +24,23 @@ const removeContact = async (contactId) => {
   await fs.writeFile(contactsPath, JSON.stringify(contacts, null, 2));
   return result;
 };
+
+const addContact = async (name, email, phone) => {
+  const contacts = await listContacts();
+  const newContact = {
+    id: nanoid(),
+    name,
+    email,
+    phone,
+  };
+  contacts.push(newContact);
+  await fs.writeFile(contactsPath, JSON.stringify(contacts, null, 2));
+  return newContact;
+};
+
+module.exports = {
+  listContacts,
+  getContactById,
+  removeContact,
+  addContact,
+};
